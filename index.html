@@ -17,11 +17,62 @@
         <div id="speed">
             
         </div>
+        <div id="whatgear"> </div>
         <div> rpm </div>
         <div id="rpm">
+            <button id="up" onclick="up()"> up </button>
+            <button id="down" onclick="down()"> down</button>
 
 
   <script>
+    var gear = 1;
+    function up() 
+    {
+        gear++;
+       
+        document.getElementById("whatgear").innerHTML = gear;
+    }
+    function down() {
+        gear--;
+       
+        document.getElementById("whatgear").innerHTML = gear;
+    }
+
+    setInterval(() => {
+        rpm()
+    }, 200);
+    function rpm()
+    {
+
+        if (gear === 1) {
+    let x = ((speed / 0.54) / (1 / 1.5) - 10) / 0.02;
+    return x;
+  } else if (gear === 2) {
+    let x = (speed / 0.66 - 10) / 0.02;
+    return x;
+  } else if (gear === 3) {
+    let x = (speed - 10) / 0.02;
+    return x;
+  } else if (gear === 4) {
+    let x = (speed / (1 / 0.85) - 10) / 0.02;
+    return x;
+  } else {
+    return null;
+  }
+  document.getElementById("rpm").innerHTML = x;
+}
+
+
+
+
+
+
+
+
+
+
+
+
     // Function to update the speedometer display
     function updateSpeed(speed) {
       const speedDisplay = document.getElementById('speed');
